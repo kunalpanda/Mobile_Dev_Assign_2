@@ -9,44 +9,35 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add New Location"
+        android:text="Delete Location"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#333333"
         android:layout_marginBottom="20dp" />
 
-    <!-- Address Input -->
-    <EditText
-        android:id="@+id/dialogAddAddress"
+    <!-- Search Input -->
+    <Button
+        android:id="@+id/btnSearchToDelete"
+        android:text="Search Before Delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Address"
         android:padding="12dp"
-        android:background="#f5f5f5"
-        android:layout_marginBottom="12dp"
-        android:inputType="text" />
+        android:layout_marginStart="5dp"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#667eea"
+        android:layout_marginBottom="12dp" />
 
-    <!-- Latitude Input -->
-    <EditText
-        android:id="@+id/dialogAddLatitude"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Latitude"
-        android:padding="12dp"
-        android:background="#f5f5f5"
-        android:layout_marginBottom="12dp"
-        android:inputType="numberDecimal|numberSigned" />
 
-    <!-- Longitude Input -->
-    <EditText
-        android:id="@+id/dialogAddLongitude"
+    <!-- Warning Message -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Longitude"
-        android:padding="12dp"
-        android:background="#f5f5f5"
-        android:layout_marginBottom="20dp"
-        android:inputType="numberDecimal|numberSigned" />
+        android:text="This will permanently delete the location"
+        android:padding="10dp"
+        android:background="#ffebee"
+        android:textColor="#c62828"
+        android:textSize="14sp"
+        android:layout_marginBottom="20dp" />
 
     <!-- Buttons -->
     <LinearLayout
@@ -55,7 +46,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnAddCancel"
+            android:id="@+id/btnDeleteCancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -66,14 +57,14 @@
             android:padding="12dp" />
 
         <Button
-            android:id="@+id/btnAddConfirm"
+            android:id="@+id/btnDeleteConfirm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="5dp"
-            android:text="Add"
+            android:text="Delete"
             android:textColor="@android:color/white"
-            android:backgroundTint="#667eea"
+            android:backgroundTint="#f44336"
             android:padding="12dp" />
 
     </LinearLayout>

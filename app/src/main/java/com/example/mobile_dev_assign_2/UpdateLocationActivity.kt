@@ -2,56 +2,82 @@ package com.example.mobile_dev_assign_2
 
 import android.app.AlertDialog
 import android.content.Context
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.widget.*
+import androidx.room.Room
 
-class UpdateLocationActivity(
-    private val context: Context,
-    private val locationDao: LocationDao
-) {
+class UpdateLocationActivity(private val context: Context) {
+
+    private val locationDao = AppDatabase.getDatabase(context).locationDao()
+
     fun show() {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.activity_update_location, null)
         val dialog = AlertDialog.Builder(context)
-            .setView(R.layout.dialog_update)
+            .setView(dialogView)
             .create()
         dialog.show()
 
-        val searchInput = dialog.findViewById<EditText>(R.id.dialogUpdateSearch)
-        val addressInput = dialog.findViewById<EditText>(R.id.dialogUpdateAddress)
-        val latitudeInput = dialog.findViewById<EditText>(R.id.dialogUpdateLatitude)
-        val longitudeInput = dialog.findViewById<EditText>(R.id.dialogUpdateLongitude)
-        val btnCancel = dialog.findViewById<Button>(R.id.btnUpdateCancel)
-        val btnConfirm = dialog.findViewById<Button>(R.id.btnUpdateConfirm)
+        // Views
+        val btnSearchLocation = dialogView.findViewById<Button>(R.id.btnSearchLocation)
+        val addressInput = dialogView.findViewById<EditText>(R.id.dialogUpdateAddress)
+        val latitudeInput = dialogView.findViewById<EditText>(R.id.dialogUpdateLatitude)
+        val longitudeInput = dialogView.findViewById<EditText>(R.id.dialogUpdateLongitude)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnUpdateCancel)
+        val btnConfirm = dialogView.findViewById<Button>(R.id.btnUpdateConfirm)
 
-        btnCancel?.setOnClickListener { dialog.dismiss() }
+        var selectedLocation: Location? = null // holds the current record to update
 
-        btnConfirm?.setOnClickListener {
-            val searchAddress = searchInput?.text.toString().trim()
-            val newAddress = addressInput?.text.toString().trim()
-            val latStr = latitudeInput?.text.toString().trim()
-            val lonStr = longitudeInput?.text.toString().trim()
+        // --- Smart Search Button ---
+        btnSearchLocation.setOnClickListener {
+            SearchActivity(context).show { location ->
+                if (location != null) {
+                    selectedLocation = location
+                    addressInput.setText(location.address)
+                    latitudeInput.setText(location.latitude.toString())
+                    longitudeInput.setText(location.longitude.toString())
+                    Toast.makeText(context, "Loaded location for update", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "No location found", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
 
-            if (searchAddress.isEmpty() || newAddress.isEmpty() || latStr.isEmpty() || lonStr.isEmpty()) {
+        // --- Cancel Button ---
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        // --- Confirm Update Button ---
+        btnConfirm.setOnClickListener {
+            if (selectedLocation == null) {
+                Toast.makeText(context, "Search a location first", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val newAddress = addressInput.text.toString().trim()
+            val latStr = latitudeInput.text.toString().trim()
+            val lonStr = longitudeInput.text.toString().trim()
+
+            if (newAddress.isEmpty() || latStr.isEmpty() || lonStr.isEmpty()) {
                 Toast.makeText(context, "Please fill all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val location = locationDao.searchByAddress(searchAddress)
-            if (location != null) {
-                try {
-                    val updated = location.copy(
-                        address = newAddress,
-                        latitude = latStr.toDouble(),
-                        longitude = lonStr.toDouble()
-                    )
-                    locationDao.update(updated)
-                    Toast.makeText(context, "Location updated successfully", Toast.LENGTH_SHORT).show()
-                    dialog.dismiss()
-                } catch (e: NumberFormatException) {
-                    Toast.makeText(context, "Invalid latitude or longitude", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(context, "Location not found", Toast.LENGTH_SHORT).show()
+            try {
+                val newLatitude = latStr.toDouble()
+                val newLongitude = lonStr.toDouble()
+
+                val updatedLocation = selectedLocation!!.copy(
+                    address = newAddress,
+                    latitude = newLatitude,
+                    longitude = newLongitude
+                )
+
+                locationDao.update(updatedLocation)
+                Toast.makeText(context, "Location updated successfully", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            } catch (e: NumberFormatException) {
+                Toast.makeText(context, "Invalid latitude or longitude", Toast.LENGTH_SHORT).show()
             }
         }
     }

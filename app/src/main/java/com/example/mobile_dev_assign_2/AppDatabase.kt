@@ -8,18 +8,20 @@ import androidx.room.RoomDatabase
 @Database(entities = [Location::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun locationDao(): LocationDao
-    
+
     companion object {
+        @Volatile
         private var INSTANCE: AppDatabase? = null
-        
+
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "spotfinder_database"
-                ).allowMainThreadQueries() // Simple - allows queries on main thread
-                .build()
+                    "locations.db"
+                )
+                    .allowMainThreadQueries() // okay for small demo apps
+                    .build()
                 INSTANCE = instance
                 instance
             }
