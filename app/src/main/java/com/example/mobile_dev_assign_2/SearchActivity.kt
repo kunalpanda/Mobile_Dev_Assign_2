@@ -11,7 +11,7 @@ class SearchActivity(
     private val locationDao: LocationDao
 ) {
     fun show(onResult: (Location?) -> Unit) {
-        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_search, null)
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.activity_search, null)
         val dialog = AlertDialog.Builder(context)
             .setView(dialogView)
             .create()
