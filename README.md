@@ -61,4 +61,4 @@ Pre-loaded with 100+ locations across: **Oshawa** • **Ajax** • **Pickering**
 
 ---
 
-Built with ❤️ by Kunal | Educational Project
+Built by Kunal Pandya | Educational Project
