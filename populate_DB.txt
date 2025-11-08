@@ -1,7 +1,4 @@
 private fun populateDatabase() {
-        // Check if already populated
-        if (locationDao.getAll().isNotEmpty()) return
-
         // Insert 100 GTA locations
         val locations = listOf(
             // GTA Locations (Set 2: Vaughan)
