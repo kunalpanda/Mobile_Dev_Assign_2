@@ -20,7 +20,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "locations.db"
                 )
-                    .allowMainThreadQueries() // okay for small demo apps
+                    .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
                 instance

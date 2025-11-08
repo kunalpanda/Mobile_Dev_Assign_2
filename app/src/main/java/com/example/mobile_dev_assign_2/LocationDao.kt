@@ -34,11 +34,11 @@ interface LocationDao {
     @Update
     fun update(location: Location)
     
-    // Update by address (finds and updates)
+    // Update by address
     @Query("UPDATE locations SET latitude = :latitude, longitude = :longitude WHERE address LIKE '%' || :address || '%'")
     fun updateByAddress(address: String, latitude: Double, longitude: Double): Int
     
-    // Update by coordinates (finds and updates address)
+    // Update by coordinates
     @Query("UPDATE locations SET address = :address WHERE latitude = :latitude AND longitude = :longitude")
     fun updateByCoordinates(latitude: Double, longitude: Double, address: String): Int
     
