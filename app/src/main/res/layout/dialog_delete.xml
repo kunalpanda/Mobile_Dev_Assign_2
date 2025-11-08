@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Location"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Search Input -->
+    <EditText
+        android:id="@+id/dialogDeleteSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search address to delete"
+        android:padding="12dp"
+        android:background="#f5f5f5"
+        android:layout_marginBottom="12dp"
+        android:inputType="text" />
+
+    <!-- Warning Message -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This will permanently delete the location"
+        android:padding="10dp"
+        android:background="#ffebee"
+        android:textColor="#c62828"
+        android:textSize="14sp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnDeleteCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:text="Cancel"
+            android:textColor="#333333"
+            android:backgroundTint="#e0e0e0"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btnDeleteConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:text="Delete"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#f44336"
+            android:padding="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add New Location"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Address Input -->
+    <EditText
+        android:id="@+id/dialogAddAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:padding="12dp"
+        android:background="#f5f5f5"
+        android:layout_marginBottom="12dp"
+        android:inputType="text" />
+
+    <!-- Latitude Input -->
+    <EditText
+        android:id="@+id/dialogAddLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Latitude"
+        android:padding="12dp"
+        android:background="#f5f5f5"
+        android:layout_marginBottom="12dp"
+        android:inputType="numberDecimal|numberSigned" />
+
+    <!-- Longitude Input -->
+    <EditText
+        android:id="@+id/dialogAddLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Longitude"
+        android:padding="12dp"
+        android:background="#f5f5f5"
+        android:layout_marginBottom="20dp"
+        android:inputType="numberDecimal|numberSigned" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAddCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:text="Cancel"
+            android:textColor="#333333"
+            android:backgroundTint="#e0e0e0"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btnAddConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:text="Add"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#667eea"
+            android:padding="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

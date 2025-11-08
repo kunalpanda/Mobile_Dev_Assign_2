@@ -1,0 +1,147 @@
+private fun populateDatabase() {
+        // Check if already populated
+        if (locationDao.getAll().isNotEmpty()) return
+
+        // Insert 100 GTA locations
+        val locations = listOf(
+            // GTA Locations (Set 2: Vaughan)
+
+            Location(0, "2141 Major Mackenzie Dr W, Vaughan", 43.8340, -79.5229), // Vaughan City Hall
+            Location(0, "1 Bass Pro Mills Dr, Vaughan", 43.8248, -79.5391),     // Vaughan Mills
+            Location(0, "100 New Park Pl, Vaughan", 43.7958, -79.5255),          // Vaughan Metropolitan Centre (VMC) - Subway Station
+            Location(0, "1 Canada's Wonderland Dr, Vaughan", 43.8428, -79.5398), // Canada's Wonderland
+            Location(0, "3200 Major Mackenzie Dr W, Vaughan", 43.8373, -79.5446), // Cortellucci Vaughan Hospital
+            Location(0, "4921 Rutherford Rd, Vaughan", 43.8157, -79.5471),        // Pierre Berton Resource Library
+            Location(0, "1 Villa Royale Ave, Vaughan", 43.8170, -79.5746),          // Vellore Village Community Centre
+            Location(0, "9200 Dufferin St, Vaughan", 43.8122, -79.4975),           // Al Palladini Community Centre
+            Location(0,"300 Pleasant Ridge Ave, Vaughan", 43.8358, -79.4721),       // North Thornhill Community Centre
+            Location(0, "1500 Highway 7, Vaughan", 43.7884, -79.5855) ,
+
+            // GTA Locations (Set 3: Scarborough)
+
+            Location(0, "300 Borough Dr, Scarborough", 43.7760, -79.2575),       // Scarborough Town Centre
+            Location(0, "1265 Military Trail, Scarborough", 43.7841, -79.1866),    // University of Toronto Scarborough
+            Location(0, "150 Borough Dr, Scarborough", 43.7738, -79.2545),      // Scarborough Civic Centre
+            Location(0, "361A Old Finch Ave, Scarborough", 43.8202, -79.2212),   // Toronto Zoo (Main Entrance)
+            Location(0, "1 Brimley Rd S, Scarborough", 43.7042, -79.2319),        // Bluffer's Park (Scarborough Bluffs)
+            Location(0, "2000 Eglinton Ave E, Scarborough", 43.7291, -79.2618), // Kennedy Subway Station
+            Location(0, "3000 Midland Ave, Scarborough", 43.8051, -79.2789),      // Agincourt Mall
+            Location(0, "940 Progress Ave, Scarborough", 43.7840, -79.2285),    // Centennial College (Progress Campus)
+            Location(0, "3050 Lawrence Ave E, Scarborough", 43.7541, -79.2288),  // Scarborough General Hospital
+            Location(0, "31 Tapscott Rd, Scarborough", 43.8118, -79.2163),
+
+
+            // GTA Locations (Set 4: North York)
+
+            Location(0, "5100 Yonge St, North York", 43.7686, -79.4121),       // North York Civic Centre
+            Location(0, "3401 Dufferin St, North York", 43.7259, -79.4526),    // Yorkdale Shopping Centre
+            Location(0, "1800 Sheppard Ave E, North York", 43.7781, -79.3456), // CF Fairview Mall
+            Location(0, "4700 Keele St, North York", 43.7735, -79.5019),       // York University (Keele Campus)
+            Location(0, "4001 Leslie St, North York", 43.7700, -79.3644),    // North York General Hospital
+            Location(0, "5697 Yonge St, North York", 43.7797, -79.4153),       // Finch Subway Station
+            Location(0, "70 Canuck Ave, North York", 43.7441, -79.4727),         // Downsview Park (Main Hub)
+            Location(0, "77 Wynford Dr, North York", 43.7256, -79.3323),        // Aga Khan Museum
+            Location(0, "770 Don Mills Rd, North York", 43.7161, -79.3396),    // Ontario Science Centre
+            Location(0, "1090 Don Mills Rd, North York", 43.7314, -79.3426),
+
+            // GTA Locations (Set 5: East York)
+
+            Location(0, "850 Coxwell Ave, East York", 43.6896, -79.3175),       // East York Civic Centre
+            Location(0, "825 Coxwell Ave, East York", 43.6892, -79.3161),       // Michael Garron Hospital
+            Location(0, "678 Pape Ave, Toronto", 43.6749, -79.3393),            // Pape Subway Station
+            Location(0, "120 Broadview Ave, Toronto", 43.6703, -79.3516),       // Broadview Subway Station
+            Location(0, "348 Danforth Ave, Toronto", 43.6755, -79.3456),        // The Big Carrot (Greektown Landmark)
+            Location(0, "45 Overlea Blvd, East York", 43.7022, -79.3361),       // East York Town Centre
+            Location(0, "170 Memorial Park Ave, East York", 43.6924, -79.3168), // S. Walter Stewart Library
+            Location(0, "67 Pottery Rd, East York", 43.6836, -79.3545),         // Todmorden Mills Heritage Site
+            Location(0, "550 Bayview Ave, Toronto", 43.6826, -79.3668),         // Evergreen Brick Works
+            Location(0, "373 Cedarvale Ave, East York", 43.6934, -79.3243),
+
+            // GTA Locations (Set 6: Downtown Toronto)
+
+            Location(0, "100 Queen St W, Toronto", 43.6534, -79.3841),       // Toronto City Hall
+            Location(0, "65 Front St W, Toronto", 43.6453, -79.3803),        // Union Station (Main Terminal)
+            Location(0, "290 Bremner Blvd, Toronto", 43.6426, -79.3871),    // CN Tower
+            Location(0, "220 Yonge St, Toronto", 43.6561, -79.3802),         // CF Toronto Eaton Centre
+            Location(0, "1 Blue Jays Way, Toronto", 43.6414, -79.3894),      // Rogers Centre
+            Location(0, "40 Bay St, Toronto", 43.6434, -79.3791),            // Scotiabank Arena
+            Location(0, "288 Bremner Blvd, Toronto", 43.6425, -79.3861),    // Ripley's Aquarium of Canada
+            Location(0, "100 Queen's Park, Toronto", 43.6677, -79.3948),    // Royal Ontario Museum (ROM)
+            Location(0, "317 Dundas St W, Toronto", 43.6536, -79.3928),      // Art Gallery of Ontario (AGO)
+            Location(0, "93 Front St E, Toronto", 43.6497, -79.3719),        // St. Lawrence Market
+            Location(0, "111 Wellesley St W, Toronto", 43.6624, -79.3917),  // Queen's Park (Legislative Assembly)
+            Location(0, "27 King's College Cir, Toronto", 43.6608, -79.3953),
+
+            // GTA Locations (Set 7: Etobicoke)
+
+            Location(0, "399 The West Mall, Etobicoke", 43.6214, -79.5631),    // Etobicoke Civic Centre
+            Location(0, "25 The West Mall, Etobicoke", 43.6120, -79.5592),     // CF Sherway Gardens
+            Location(0, "5250 Dundas St W, Etobicoke", 43.6384, -79.5358),    // Kipling Station (TTC & GO Hub)
+            Location(0, "205 Humber College Blvd, Etobicoke", 43.7316, -79.6067), // Humber College (North Campus)
+            Location(0, "555 Rexdale Blvd, Etobicoke", 43.7153, -79.6053),     // Woodbine Racetrack
+            Location(0, "500 Rexdale Blvd, Etobicoke", 43.7180, -79.6050),     // Woodbine Centre & Fantasy Fair
+            Location(0, "250 The East Mall, Etobicoke", 43.6293, -79.5518),    // Cloverdale Mall
+            Location(0, "256 Centennial Park Rd, Etobicoke", 43.6405, -79.5856), // Centennial Park
+            Location(0, "1025 The Queensway, Etobicoke", 43.6108, -79.5173),   // The Queensway (Major Retail Node)
+            Location(0, "100 Humber Bay Park Rd W, Etobicoke", 43.6207, -79.4589),
+
+            // GTA Locations (Set 8: Mississauga)
+
+            Location(0, "300 City Centre Dr, Mississauga", 43.5891, -79.6457), // Mississauga City Hall
+            Location(0, "100 City Centre Dr, Mississauga", 43.5930, -79.6425), // Square One Shopping Centre
+            Location(0, "4141 Living Arts Dr, Mississauga", 43.5910, -79.6461), // Living Arts Centre
+            Location(0, "455 City Centre Dr, Mississauga", 43.5897, -79.6409), // City Centre Transit Terminal
+            Location(0, "3359 Mississauga Rd, Mississauga", 43.5484, -79.6603), // University of Toronto Mississauga
+            Location(0, "2225 Erin Mills Pkwy, Mississauga", 43.5412, -79.7214), // Erin Mills Town Centre
+            Location(0, "100 Queensway W, Mississauga", 43.5756, -79.6174), // Trillium Health Partners (Mississauga)
+            Location(0, "301 Burnhamthorpe Rd W, Mississauga", 43.5908, -79.6473), // Mississauga Central Library
+            Location(0, "1082 Lakeshore Rd E, Mississauga", 43.5478, -79.5704), // Port Credit Lighthouse
+            Location(0, "6301 Main St, Mississauga", 43.5843, -79.7397), // Streetsville Village Square
+            Location(0, "6019 Mavis Rd, Mississauga", 43.6148, -79.6843), // Heartland Town Centre
+            Location(0, "3000 Fowle Dr, Mississauga", 43.5516, -79.6385),
+
+            // GTA Locations (Set 9: Oshawa)
+
+            Location(0, "50 Centre St S, Oshawa", 43.8958, -78.8658),         // Oshawa City Hall
+            Location(0, "419 King St W, Oshawa", 43.8902, -78.8794),         // Oshawa Centre
+            Location(0, "99 Athol St E, Oshawa", 43.8970, -78.8597),         // Tribute Communities Centre
+            Location(0, "2000 Simcoe St N, Oshawa", 43.9456, -78.8967),      // Ontario Tech University / Durham College
+            Location(0, "4711 Bloor St W, Oshawa", 43.8642, -78.9372),        // Oshawa GO Station
+            Location(0, "1 Hospital Ct, Oshawa", 43.8973, -78.8736),         // Lakeridge Health Oshawa
+            Location(0, "270 Simcoe St N, Oshawa", 43.9044, -78.8651),        // Parkwood Estate National Historic Site
+            Location(0, "1300 King St E, Oshawa", 43.9074, -78.8153),        // Kingsway Village Shopping Centre
+            Location(0, "65 Bagot St, Oshawa", 43.8964, -78.8624),           // Oshawa Public Libraries (McLaughlin)
+            Location(0, "1050 Simcoe St N, Oshawa", 43.9251, -78.8757),
+
+            // GTA Locations (Set 10: Ajax & Pickering)
+
+            // Ajax
+            Location(0, "65 Harwood Ave S, Ajax", 43.8506, -79.0203),       // Ajax Town Hall
+            Location(0, "901 Harwood Ave N, Ajax", 43.8732, -79.0227),      // Ajax GO Station
+            Location(0, "1000 Bayly St, Ajax", 43.8443, -79.0063),          // Pickering Casino Resort
+            Location(0, "135 Bayly St W, Ajax", 43.8530, -79.0199),         // Ajax Plaza
+            Location(0, "300 Kingston Rd E, Ajax", 43.8488, -79.0069),      // Durham Centre (Costco, Walmart)
+
+            // Pickering
+            Location(0, "1 The Esplanade S, Pickering", 43.8349, -79.0855),  // Pickering City Hall
+            Location(0, "1355 Kingston Rd, Pickering", 43.8347, -79.0853), // Pickering Town Centre
+            Location(0, "1322 Kingston Rd, Pickering", 43.8368, -79.0872), // Pickering GO Station
+            Location(0, "931 Liverpool Rd, Pickering", 43.8279, -79.0827),  // Pickering's Nautical Village
+            Location(0, "1020 Krosno Blvd, Pickering", 43.8384, -79.0561),
+
+            // GTA Locations (Set: Brampton)
+
+            Location(0, "2 Wellington St W, Brampton", 43.6845, -79.7599), // Brampton City Hall
+            Location(0, "25 Peel Centre Dr, Brampton", 43.7153, -79.7345),  // Bramalea City Centre
+            Location(0, "31 Church St W, Brampton", 43.6833, -79.7644),       // Brampton GO Station
+            Location(0, "7899 McLaughlin Rd, Brampton", 43.6545, -79.7383),    // Sheridan College (Davis Campus)
+            Location(0, "20 Lynch St, Brampton", 43.6826, -79.7618),          // Peel Memorial Centre
+            Location(0, "1 Theatre Ln, Brampton", 43.6853, -79.7598),          // The Rose Brampton (Theatre)
+            Location(0, "499 Main St S, Brampton", 43.6702, -79.7587),         // Shoppers World Brampton
+            Location(0, "100 Great Lakes Dr, Brampton", 43.7290, -79.7208),    // Trinity Common Mall
+            Location(0, "45 Main St S, Brampton", 43.6821, -79.7602),          // Gage Park
+            Location(0, "1600 Bovaird Dr W, Brampton", 43.7118, -79.8517)     // Mount Pleasant GO Station
+        )
+
+        locations.forEach { locationDao.insert(it) }
+    }
